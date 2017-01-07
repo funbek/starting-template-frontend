@@ -18,9 +18,7 @@
   "dependencies": {
     "reset-css": "~2.0.2011012602",
     "sass-mq": "~3.2.5",
-    "jquery-1.12.1": "http://code.jquery.com/jquery-1.12.1.js",
-    "font-awesome": "fontawesome#^4.7.0",
-    "bootstrap-sass": "bootstrap-sass-official#^3.3.7"
+    "jquery-1.12.1": "http://code.jquery.com/jquery-1.12.1.js"
   },
   "install": {
     "base": "vendor",
