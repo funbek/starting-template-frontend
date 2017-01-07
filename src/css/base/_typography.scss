@@ -1,0 +1,26 @@
+$fw-light: 300;
+$fw-normal: 400;
+$fw-semi-bold: 500;
+$fw-bold: 600;
+
+@font-face {
+  font-family: 'RoadRadio';
+  src: url('../../../../fonts/RoadRadio/RoadRadio.eot?#iefix') format('embedded-opentype'),  url('../../../../fonts/RoadRadio/RoadRadio.otf')  format('opentype'),
+	     url('../../../../fonts/RoadRadio/RoadRadio.woff') format('woff'), url('../../../../fonts/RoadRadio/RoadRadio.ttf')  format('truetype'), url('../../../../RoadRadio/RoadRadio.svg#RoadRadio') format('svg');
+  font-weight: $fw-normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'RoadRadio';
+  src: url('../../../../fonts/RoadRadio-Bold/RoadRadio-Bold.eot?#iefix') format('embedded-opentype'),  url('../../../../fonts/RoadRadio-Bold/RoadRadio-Bold.otf')  format('opentype'),
+	     url('../../../../fonts/RoadRadio-Bold/RoadRadio-Bold.woff') format('woff'), url('../../../../fonts/RoadRadio-Bold/RoadRadio-Bold.ttf')  format('truetype'), url('../../../../fonts/RoadRadio-Bold/RoadRadio-Bold.svg#RoadRadio-Bold') format('svg');
+  font-weight: $fw-bold;
+  font-style: normal;
+}
+
+$font-family: 'Roboto', sans-serif;
+$font-road:'RoadRadio', sans-serif;
+$font: 300 16px/19px $font-family;
+
+$fa-font-path: "../fonts";
+$font-icon: "FontAwesome";

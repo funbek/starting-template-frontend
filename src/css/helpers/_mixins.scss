@@ -1,0 +1,99 @@
+// Кнопки
+@mixin btnColor($color: $submenu-color) {
+	background: $color;
+
+	&:hover {
+		background: shade($color, 20%);
+	}
+}
+
+@mixin tableToBlock($width: 100%) {
+	width: $width;
+	display: block;
+}
+
+@mixin verticlePosition($vertical-align: middle){
+  &:before {
+    content: '';
+    display: inline-block;
+    vertical-align: $vertical-align;
+    height: 100%;
+    width: 0;
+  }
+}
+
+@mixin truncateText($overflow: ellipsis, $max-width: 320px){
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: $overflow;
+  max-width: $max-width;
+  display: inline-block;
+}
+
+// убираем стандартное форматирование у ссылок и задаем им цвет
+
+@mixin link-decor($color: $second-color, $hover-color: $hover-link-color, $visited-color: $visited-link-color ) {
+  text-decoration: none;
+  color: $color;
+
+  &:hover,
+  &:active,
+  &:focus {
+    color: $hover-color;
+  }
+
+  &:visited {
+    color: $visited-color;
+  }
+}
+
+
+// box с изображением
+@mixin box-img($background: $white-color url(../images/benefits-hand.png) no-repeat) {
+    @extend .box;
+    padding-right: 430px;
+    background: $background;
+    background-position: bottom right;
+    background-size: contain;
+
+    @include mq($until: tablet-xs) {
+        background: $white-color;
+        padding-right: 30px;
+    }
+}
+
+// Кросбарузерный opacity
+@mixin opacity($opacity) {
+  opacity: $opacity;
+  $opacity-ie: $opacity * 100;
+  filter: alpha(opacity=$opacity-ie); //IE8
+}
+
+
+
+// Относительное Центрирование  @include center(both);
+@mixin center($position) {
+  position: absolute;
+
+  @if $position == 'vertical' {
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+  }
+
+  @else if $position == 'horizontal' {
+    left: 50%;
+    -webkit-transform: translateX(-50%);
+    -ms-transform: translateX(-50%);
+    transform: translate(-50%);
+  }
+
+  @else if $position == 'both' {
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+  }
+}

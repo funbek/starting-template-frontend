@@ -1,0 +1,44 @@
+<!doctype html>
+<html>
+	<head>
+		//= templates/head.html
+	</head>
+	<!-- Класс main-page убирает отступ контента и ставит его по центру -->
+	<body>
+
+		<!-- Глваное меню сайта -->
+		<!-- //= templates/g-menu.html -->
+		<!-- ++==++ -->
+
+		<!-- The head of site, not changed?! -->
+		<header class="head-site">
+			<!-- //= template/header.html -->
+		</header>
+
+		<div class="main">
+			<div class="container-block">
+				<h1>Wow, what is this?</h1>
+			</div>
+		</div>
+
+		<footer class="footer-site">
+			<!-- //= templates/footer.html -->
+		</footer>
+
+		<!-- Download and compiled all bower_components scripts -->
+
+		<!-- build:js js/combined.js -->
+		<!-- bower:js -->
+		<!-- endbower -->
+		<!-- endbuild -->
+
+		<!-- Load my file, when we control all libraries -->
+		<script src="js/main.js"></script>
+
+
+		<!-- Popup контейнеры -->
+		//= templates/popups.html
+		<!-- ++==++ -->
+
+	</body>
+</html>

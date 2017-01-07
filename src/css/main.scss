@@ -1,0 +1,29 @@
+// ==== Сторонние пакеты ====
+@import "../../bower_components/reset-css/_reset.scss";
+@import "../../node_modules/sass-mq/_mq.scss";
+
+
+// ==== Помошники ====
+@import "helpers/variables";
+@import "helpers/mixins";
+@import "helpers/helpers";
+@import "helpers/media-size";
+
+
+// ==== Базовые стили ====
+// Шрифты
+@import "base/typography";
+// Стили по умолчанию
+@import "base/default";
+// Стили заголовков
+@import "base/heads";
+
+
+// ==== Макеты ====
+@import "layout/header";
+@import "layout/footer";
+
+// ==== Компоненты ====
+
+
+// ==== Страницы ====

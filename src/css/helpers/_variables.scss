@@ -1,0 +1,21 @@
+// ==++== Задаем все основные цвета ==++==
+$main-color: #6ebeb3;
+$visited-link-color: tint($main-color, 30%);
+$hover-link-color: shade($main-color, 30%);
+$second-color: #9ece6e;
+$white-color: #fff;
+$main-gray-color: #ccc;
+$dark-block-color: #e8e8e8;
+$black-color: #000;
+$main-dark-color: #333;
+
+$main-radius: 3px;
+
+// ==++== Главные размеры ==++==
+
+
+// == Размеры контента в зависимости от экрана
+$max-width: 1000px;
+$min-width: 320px;
+
+// ==++== Переназначем переменые для bootstrap ==++==

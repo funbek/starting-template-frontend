@@ -1,0 +1,15 @@
+// rscss
+._unmargin { margin: 0 !important; }
+._unpadding { padding: 0 !important; }
+._center { text-align: center !important; }
+._pull-left { float: left !important; }
+._pull-right { float: right !important; }
+
+
+
+.dark-link {
+    font-size: .8rem;
+    color: $main-dark-color;
+    text-decoration: none;
+    display: block;
+}
