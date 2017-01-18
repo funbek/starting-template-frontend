@@ -1,10 +1,10 @@
-# My Ganzo project #
+# Starer kit for project with bootstrap, fontAwesome, bx-slider and magnific popup #
 
-## What need to compile ##
+## What need for compile ##
 * Install node.js (npm)
 * Install bower
-
-## Comand to start project ##
 * npm install
 * bower install
+
+## Comand to start project ##
 * gulp
