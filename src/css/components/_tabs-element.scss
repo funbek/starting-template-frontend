@@ -1,0 +1,74 @@
+.tabs-content {
+  margin-top: 40px;
+
+  > .tabs {
+    font-size: 0;
+    text-align: center;
+    margin-bottom: 40px;
+  }
+  .tabsSlider {
+    font-size: 0;
+    text-align: center;
+    margin-bottom: 40px;
+  }
+}
+.tab-list {
+  line-height: 1;
+  font-size: 1.5rem;
+  font-weight: $fw-bold;
+  color: $main-dark-color;
+  display: inline-block;
+  position: relative;
+  margin-left: 45px;
+  cursor: pointer;
+  @include mq($until: tablet-sm)  {
+    font-size: 1.2rem;
+  }
+
+  &:after {
+    content: "";
+    width: 0;
+    height: 2px;
+    background: $main-color;
+    position: absolute;
+    bottom: -8px;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    transition: all .3s ease-in-out;
+  }
+
+  &:first-child {
+    margin-left: 0;
+  }
+
+  &.current {
+    color: $main-color;
+
+    &:after {
+      content: "";
+      width: 100%;
+    }
+  }
+  &:hover {
+    color: $main-color;
+  }
+}
+
+.tabs-content {
+  > .box {
+    display: none;
+
+    &.visible {
+      display: block;
+    }
+  }
+}
+
+.accordion-trigger {
+  display: none;
+
+  // @include mq($until: tablet-xs) {
+  //   display: block;
+  // }
+}

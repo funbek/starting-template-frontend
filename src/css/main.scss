@@ -1,3 +1,10 @@
+// ==== Сторонние пакеты ====
+@import "../../bower_components/reset-css/_reset.scss";
+@import "../../node_modules/sass-mq/_mq.scss";
+@import "../../node_modules/sass-bootstrap-grid-only/assets/stylesheets/_bootstrap-custom.scss";
+@import "../../bower_components/font-awesome/scss/font-awesome.scss";
+
+
 // ==== Помошники ====
 @import "helpers/variables";
 @import "helpers/mixins";
@@ -12,17 +19,36 @@
 @import "base/default";
 // Стили заголовков
 @import "base/heads";
+// Элементы формы
+@import "base/form-elements";
+// Кнопки
+@import "base/buttons";
 
-// ==== Сторонние пакеты ====
-@import "../../bower_components/reset-css/_reset.scss";
-@import "../../node_modules/sass-mq/_mq.scss";
-@import "../../node_modules/sass-bootstrap-grid-only/assets/stylesheets/_bootstrap-custom.scss";
 
 // ==== Макеты ====
 @import "layout/header";
+@import "layout/main-navigation";
 @import "layout/footer";
+@import "layout/content";
+
 
 // ==== Компоненты ====
+// = Полезные ссылки =
+@import "components/usefull-links";
+// = Стили для табов =
+@import "components/tabs-element";
+// = Хлебные крошки =
+@import "components/breadcrumbs";
+// = Хлебные крошки =
+@import "components/navigation-content";
+// = Dropdown =
+@import "components/dropdown";
+// = Таблицы =
+@import "components/tables";
+// = Списки =
+@import "components/lists";
+// = Popups =
+@import "components/popups";
 
 
 // ==== Страницы ====

@@ -29,6 +29,8 @@ var path = {
         image: 'build/img/',
         ico: 'build/img/ico/', //Выкидываем иконки
         fonts: 'build/fonts/',
+        bowerDir: 'build/fonts',
+        browserconfig: 'build/',
         jsVendor: 'build/js/vendor/'
     },
     src: { //Пути откуда брать исходники
@@ -38,16 +40,18 @@ var path = {
         css: 'src/css/*.css',
         ico: 'src/img/ico/*.*', //Забираем все иконки
         image: 'src/img/*.*', //Синтаксис img/**/*.* означает - взять все файлы всех расширений из папки и из вложенных каталогов
+        browserconfig: 'src/*.xml', //Файл для определения favicon в windows mobile
         fonts: 'src/fonts/**/*.*',
+        bowerDir: 'bower_components',
         jsVendor: 'src/js/vendor/*.js'
     },
     watch: { //Тут мы укажем, за изменением каких файлов мы хотим наблюдать
-        html: 'src/*.html',
-        template: 'src/template/*.html',
+        html: 'src/**/*.html',
         js: 'src/js/*.js',
-        style: 'src/css/main.scss',
+        style: 'src/css/**/*.scss',
         image: 'src/img/*.*',
-        fonts: 'src/fonts/*.*'
+        fonts: 'src/fonts/*.*',
+        browserconfig: 'src/*.xml'
     },
     clean: 'build'
 };
@@ -136,10 +140,22 @@ gulp.task('ico:build', function() {
         .pipe(gulp.dest(path.build.ico))
 });
 
-// Собираем иконки для мобильных версий сайта
+// Забираем шрифты
 gulp.task('fonts:build', function() {
     gulp.src(path.src.fonts)
         .pipe(gulp.dest(path.build.fonts))
+});
+
+// Забираем шрифты из fontawesome
+gulp.task('fontawesome:build', function() {
+    gulp.src(path.src.bowerDir + '/font-awesome/fonts/*.*')
+        .pipe(gulp.dest(path.build.bowerDir));
+});
+
+// Забираем файл конфигурации browserconfig
+gulp.task('config:build', function() {
+    gulp.src(path.src.browserconfig)
+        .pipe(gulp.dest(path.build.browserconfig))
 });
 
 
@@ -150,16 +166,14 @@ gulp.task('build', [
     'style:build',
     'image:build',
     'ico:build',
-    'fonts:build'
+    'fonts:build',
+    'fontawesome:build',
+    'config:build'
 ]);
 
 // следим за изменениями файлов
 gulp.task('watch', function(){
     watch([path.watch.html], function(event, cb) {
-        gulp.start('html:build');
-    });
-
-    watch([path.watch.template], function(event, cb) {
         gulp.start('html:build');
     });
 
@@ -176,7 +190,9 @@ gulp.task('watch', function(){
     watch([path.watch.fonts], function(event, cb) {
         gulp.start('fonts:build');
     });
-
+    watch([path.watch.browserconfig], function(event, cb) {
+        gulp.start('config:build');
+    });
 });
 
 // Задаем начальную команду gulp на выполнение тасков и слежение элементов

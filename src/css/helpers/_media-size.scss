@@ -1,12 +1,14 @@
 $mq-breakpoints: (
-  mobile-xs:		400px,
+  mobile-xs:		440px,
   mobile-sm:		540px,
   mobile-md:		640px,
-  mobile-lg:		768px - 1,
+  mobile-lg:		$screen-sm-min,
 
-  tablet-xs:		970,
+  tablet-sm:		860px,
+  tablet-md:		900px,
+  tablet-lg:		$screen-md-min,
 
-  desctop-sm:		1100px,
-  desctop-md:		1400px - 1,
-  desctop-lg:		1700
+  desctop-sm:		$screen-lg-min,
+  desctop-md:		1200px,
+  desctop-lg:		1700px
 );

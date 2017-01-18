@@ -48,20 +48,6 @@
 }
 
 
-// box с изображением
-@mixin box-img($background: $white-color url(../images/benefits-hand.png) no-repeat) {
-    @extend .box;
-    padding-right: 430px;
-    background: $background;
-    background-position: bottom right;
-    background-size: contain;
-
-    @include mq($until: tablet-xs) {
-        background: $white-color;
-        padding-right: 30px;
-    }
-}
-
 // Кросбарузерный opacity
 @mixin opacity($opacity) {
   opacity: $opacity;
@@ -96,4 +82,26 @@
     -ms-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
   }
+}
+
+/* mixin for retina background images */
+@mixin background-image-retina($file, $type, $width, $height) {
+  background-image: url($file + '.' + $type);
+
+  @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 144dpi) {
+    & {
+      background-image: url($file + '@2x.' + $type);
+      @if $height == none {
+        background-size: $width;
+      } @else {
+        background-size: $width $height;
+      }
+    }
+  }
+}
+
+// Example
+#foo {
+  @include background-image-retina('foobar', 'png', 10px, 20px);
+  background: repeat;
 }

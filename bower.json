@@ -18,7 +18,9 @@
   "dependencies": {
     "reset-css": "~2.0.2011012602",
     "sass-mq": "~3.2.5",
-    "jquery-1.12.1": "http://code.jquery.com/jquery-1.12.1.js"
+    "jquery-1.12.1": "http://code.jquery.com/jquery-1.12.1.js",
+    "bxslider-4": "^4.2.5",
+    "magnific-popup": "^1.1.0"
   },
   "install": {
     "base": "vendor",

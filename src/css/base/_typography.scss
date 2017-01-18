@@ -5,22 +5,35 @@ $fw-bold: 600;
 
 @font-face {
   font-family: 'RoadRadio';
-  src: url('../../../../fonts/RoadRadio/RoadRadio.eot?#iefix') format('embedded-opentype'),  url('../../../../fonts/RoadRadio/RoadRadio.otf')  format('opentype'),
-	     url('../../../../fonts/RoadRadio/RoadRadio.woff') format('woff'), url('../../../../fonts/RoadRadio/RoadRadio.ttf')  format('truetype'), url('../../../../RoadRadio/RoadRadio.svg#RoadRadio') format('svg');
+  src: url('../fonts/RoadRadio/RoadRadio.eot?#iefix') format('embedded-opentype'),  url('../fonts/RoadRadio/RoadRadio.otf')  format('opentype'),
+	     url('../fonts/RoadRadio/RoadRadio.woff') format('woff'), url('../fonts/RoadRadio/RoadRadio.ttf')  format('truetype'), url('../fonts/RoadRadio/RoadRadio.svg#RoadRadio') format('svg');
   font-weight: $fw-normal;
   font-style: normal;
 }
 @font-face {
   font-family: 'RoadRadio';
-  src: url('../../../../fonts/RoadRadio-Bold/RoadRadio-Bold.eot?#iefix') format('embedded-opentype'),  url('../../../../fonts/RoadRadio-Bold/RoadRadio-Bold.otf')  format('opentype'),
-	     url('../../../../fonts/RoadRadio-Bold/RoadRadio-Bold.woff') format('woff'), url('../../../../fonts/RoadRadio-Bold/RoadRadio-Bold.ttf')  format('truetype'), url('../../../../fonts/RoadRadio-Bold/RoadRadio-Bold.svg#RoadRadio-Bold') format('svg');
+  src: url('../fonts/RoadRadio-Bold/RoadRadio-Bold.eot?#iefix') format('embedded-opentype'),  url('../fonts/RoadRadio-Bold/RoadRadio-Bold.otf')  format('opentype'),
+	     url('../fonts/RoadRadio-Bold/RoadRadio-Bold.woff') format('woff'), url('../fonts/RoadRadio-Bold/RoadRadio-Bold.ttf')  format('truetype'), url('../fonts/RoadRadio-Bold/RoadRadio-Bold.svg#RoadRadio-Bold') format('svg');
   font-weight: $fw-bold;
   font-style: normal;
 }
+@font-face {
+	font-family: 'Room';
+	src: url('../fonts/Room-Bold/Room-Bold.eot');
+	src: local('Room Bold'), local('../fonts/Room-Bold/Room-Bold'),
+		url('../fonts/Room-Bold/Room-Bold.eot?#iefix') format('embedded-opentype'),
+		url('../fonts/Room-Bold/Room-Bold.woff') format('woff'),
+		url('../fonts/Room-Bold/Room-Bold.ttf') format('truetype'),
+		url('../fonts/Room-Bold/Room-Bold.svg#Room-Bold') format('svg');
+	font-weight: $fw-bold;
+	font-style: normal;
+}
 
-$font-family: 'Roboto', sans-serif;
-$font-road:'RoadRadio', sans-serif;
-$font: 300 16px/19px $font-family;
+
+$font-roboto: 'Roboto', sans-serif;
+$font-room: 'Room', sans-serif;
+$font-family: 'RoadRadio', "Arial", sans-serif;
+$font: $fw-normal 16px/19px $font-family;
 
 $fa-font-path: "../fonts";
 $font-icon: "FontAwesome";

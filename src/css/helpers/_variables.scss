@@ -1,18 +1,25 @@
 // ==++== Задаем все основные цвета ==++==
-$main-color: #6ebeb3;
+$main-color: #e31e24;
+$second-color: #9ece6e;
 $visited-link-color: tint($main-color, 30%);
 $hover-link-color: shade($main-color, 30%);
-$second-color: #9ece6e;
 $white-color: #fff;
 $main-gray-color: #ccc;
+$catalog-element-color: darken($white-color, 6);
 $dark-block-color: #e8e8e8;
 $black-color: #000;
 $main-dark-color: #333;
+$breadcrumb-color: lighten($main-dark-color, 40);
 
 $main-radius: 3px;
 
 // ==++== Главные размеры ==++==
-
+$nav-height: 60px;
+$nav-link-size: 1.13rem;
+$input-height: 40px;
+$main-top-padding: 50px;
+$breadcrumbs-height: 30px;
+$label-width: 90px;
 
 // == Размеры контента в зависимости от экрана
 $max-width: 1000px;
