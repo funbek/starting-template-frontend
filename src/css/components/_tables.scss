@@ -18,7 +18,6 @@
     > tr {
       > td {
         padding: 5px;
-        font-family: $font-second;
       }
     }
   }
@@ -76,7 +75,6 @@
       > th {
         padding: 10px;
         vertical-align: middle;
-        font-family: $font-second;
         border-bottom: 2px solid $main-color;
         text-align: center;
         font-weight: $fw-bold;
@@ -96,7 +94,6 @@
     > tr {
       > td {
         padding: 10px;
-        font-family: $font-second;
         vertical-align: middle;
         border-bottom: 1px solid $main-gray-color;
         text-align: center;
