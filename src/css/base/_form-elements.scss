@@ -56,7 +56,7 @@ button {
       left: 0;
       display: inline-block;
       width: $label-width;
-      font-family: $font-roboto;
+      font-family: $font-second;
       font-size: 1rem;
       font-weight: $fw-semi-bold;
       line-height: $input-height;
@@ -171,7 +171,7 @@ button {
     }
   }
   > .label {
-    font-family: $font-roboto;
+    font-family: $font-second;
     font-size: 1rem;
     color: $main-dark-color;
     padding-left: $label-width + 8px;
