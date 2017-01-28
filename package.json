@@ -7,7 +7,6 @@
     "bootstrap-sass": "^3.3.7",
     "gulp-autoprefixer": "^3.1.0",
     "gulp-if": "^2.0.0",
-    "gulp-minify-css": "^1.2.4",
     "gulp-sass": "^2.1.1",
     "gulp-useref": "^3.0.4",
     "sass-bootstrap-grid-only": "^1.0.3",
@@ -18,6 +17,7 @@
   "devDependencies": {
     "browser-sync": "*",
     "gulp": "*",
+    "gulp-clean-css": "^2.3.2",
     "gulp-gzip": "^1.2.0",
     "gulp-htmlmin": "^1.3.0",
     "gulp-imagemin": "*",

@@ -12,6 +12,14 @@
 	display: block;
 }
 
+@mixin clearfix {
+	&::after {
+		content: "";
+		display: table;
+		clear: both;;
+	}
+}
+
 @mixin verticlePosition($vertical-align: middle){
   &:before {
     content: '';
@@ -104,4 +112,13 @@
 #foo {
   @include background-image-retina('foobar', 'png', 10px, 20px);
   background: repeat;
+}
+
+
+@mixin ico-center($file, $padding-left, $background-position, $with, $height, $type) {
+	background-image: url("../img/" + $file + "." + $type);
+	background-repeat: no-repeat;
+	background-size: $with $height;
+	background-position: $background-position center;
+	padding-left: $padding-left;
 }

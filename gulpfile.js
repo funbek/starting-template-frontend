@@ -15,7 +15,7 @@ var gulp = require('gulp'),
     useref = require('gulp-useref'), // изменяем пути
     wiredep = require('wiredep').stream, // забираем из bower
     gulpif = require('gulp-if'),  // добавляет ветвление (здесь нужно для минификации)
-    minifyCss = require('gulp-minify-css'), // для сжатия обычных css
+    cleanCSS = require('gulp-clean-css'), // для сжатия обычных css
     htmlmin = require('gulp-htmlmin'), // сжимаем html, есть ли такая небохобимость???
     gzip = require('gulp-gzip'), // сжимаем gzip
     reload = browserSync.reload
@@ -37,6 +37,8 @@ var path = {
         html: 'src/*.html', //Синтаксис src/*.html говорит gulp что мы хотим взять все файлы с расширением .html
         js: 'src/js/main.js',//В стилях и скриптах нам понадобятся только main файлы
         style: 'src/css/*.scss',
+        spriteStyle: 'src/css/',
+        spriteImg: 'src/img/',
         css: 'src/css/*.css',
         ico: 'src/img/ico/*.*', //Забираем все иконки
         image: 'src/img/*.*', //Синтаксис img/**/*.* означает - взять все файлы всех расширений из папки и из вложенных каталогов
@@ -55,8 +57,6 @@ var path = {
     },
     clean: 'build'
 };
-
-
 
 
 // настройки dev сервера
@@ -88,7 +88,6 @@ gulp.task('html:build', function () {
         .pipe(useref()) // Забираем файлы из bower_components
         .pipe(rigger()) //Прогоним через rigger
         //.pipe(gulpif('*.js', uglify())) // сжимаем все js файлы
-        //.pipe(gulpif('*.css', minifyCss())) // сжимаем все css файлы
         //.pipe(htmlmin({collapseWhitespace: true})) // Сжимаем html
         .pipe(gulp.dest(path.build.html)) //Выплюнем их в папку build
         .pipe(reload({stream: true})); //И перезагрузим наш сервер для обновлений
@@ -133,6 +132,19 @@ gulp.task('image:build', function () {
         .pipe(gulp.dest(path.build.image)) //И бросим в build
 });
 
+gulp.task('sprite:build', function() {
+    var spriteData =
+        gulp.src(path.src.spriteImg + 'sprite/*.*') // путь, откуда берем картинки для спрайта
+            .pipe(spritesmith({
+                imgName: 'sprite.png',
+                cssName: '_sprite.scss',
+                imgPath: '../img/sprite/sprite.png',
+            }));
+
+    spriteData.img.pipe(gulp.dest(path.build.image + 'sprite')); // путь, куда сохраняем картинку
+    spriteData.css.pipe(gulp.dest(path.src.spriteStyle + 'base')); // путь, куда сохраняем стили
+});
+
 
 // Собираем иконки для мобильных версий сайта
 gulp.task('ico:build', function() {
@@ -168,6 +180,7 @@ gulp.task('build', [
     'ico:build',
     'fonts:build',
     'fontawesome:build',
+    'sprite:build',
     'config:build'
 ]);
 
