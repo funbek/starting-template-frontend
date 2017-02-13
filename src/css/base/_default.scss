@@ -31,64 +31,12 @@ p {
     margin-bottom: 20px;
 }
 
-.container {
-  width: 960px;
-
-  @include mq($from: desctop-md) {
-    width: $container-lg;
-  }
-  @include mq($until: tablet-lg) {
-    width: 800px;
-  }
-  @include mq($until: tablet-sm) {
-    width: $container-sm;
-  }
-  @include mq($until: mobile-lg) {
-    width: 100%;
-  }
-}
-.col-xxs-12 {
-  @include mq($until: mobile-lg) {
-    width: 100%;
-    float: left;
-  }
-}
-
 strong {
   font-weight: $fw-bold;
-  color: $main-color;
 }
 b {
   font-weight: $fw-bold;
 }
-
 i {
   font-style: italic;
-}
-.colored-element {
-  color: $main-color;
-
-  &.-bigger {
-    font-size: 1.1rem;
-  }
-}
-.text-right {
-  text-align: right;
-}
-.text-left {
-  text-align: left;
-}
-.other-font {
-  font-family: $font-family;
-}
-.bigger {
-  font-size: 1.1rem;
-
-  &.-most {
-    font-size: 1.5rem;
-  }
-}
-.lightnes-text {
-  color: lighten($main-dark-color, 30);
-  line-height: 1;
 }

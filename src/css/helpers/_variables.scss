@@ -4,10 +4,10 @@ $second-color: #9ece6e;
 $visited-link-color: tint($main-color, 30%);
 $hover-link-color: shade($main-color, 30%);
 $white-color: #fff;
+$black-color: #000;
 $main-gray-color: #ccc;
 $catalog-element-color: darken($white-color, 6);
 $dark-block-color: #e8e8e8;
-$black-color: #000;
 $main-dark-color: #333;
 $breadcrumb-color: lighten($main-dark-color, 40);
 
@@ -24,5 +24,14 @@ $label-width: 90px;
 // == Размеры контента в зависимости от экрана
 $max-width: 1000px;
 $min-width: 320px;
+
+// Z-index
+$z-index: (
+  "modal"              : 200,
+  "navigation"         : 100,
+  "footer"             : 90,
+  "default"            : 1,
+  "below"              : -1,
+);
 
 // ==++== Переназначем переменые для bootstrap ==++==

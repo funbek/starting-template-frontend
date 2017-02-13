@@ -1,6 +1,6 @@
 {
-  "name": "Diveplanet-store",
-  "description": "Сайт интернет-магазина diveplanet",
+  "name": "Name of site",
+  "description": "description site",
   "main": "",
   "moduleType": [],
   "authors": [
@@ -16,26 +16,7 @@
     "tests"
   ],
   "dependencies": {
-    "reset-css": "~2.0.2011012602",
-    "sass-mq": "~3.2.5",
-    "jquery-1.12.1": "http://code.jquery.com/jquery-1.12.1.js",
-    "bxslider-4": "^4.2.5",
-    "magnific-popup": "^1.1.0"
-  },
-  "install": {
-    "base": "vendor",
-    "path": {
-      "js": "{name}/js",
-      "css": "{name}/css",
-      "/[sc|sa]ss$/": "{name}/css",
-      "eot": "{name}/fonts",
-      "svg": "{name}/fonts",
-      "ttf": "{name}/fonts",
-      "woff": "{name}/fonts"
-    },
-    "sources": {}
-  },
-  "devDependencies": {
-    "jquery": "^2.2.1"
+    "magnific-popup": "^1.1.0",
+    "jquery": "^3.1.1"
   }
 }

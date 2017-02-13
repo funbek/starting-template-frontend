@@ -1,15 +1,16 @@
 // ==== Сторонние пакеты ====
-@import "../../bower_components/reset-css/_reset.scss";
+@import "../../node_modules/reset-css/_reset.scss";
 @import "../../node_modules/sass-mq/_mq.scss";
 @import "../../node_modules/sass-bootstrap-grid-only/assets/stylesheets/_bootstrap-custom.scss";
-// @import "../../bower_components/font-awesome/scss/font-awesome.scss";
+// @import "../../node_modules/font-awesome/scss/font-awesome.scss";
 
 
 // ==== Помошники ====
 @import "helpers/variables";
 @import "helpers/mixins";
-@import "helpers/helpers";
+@import "helpers/functions";
 @import "helpers/media-size";
+@import "helpers/helpers";
 
 
 // ==== Базовые стили ====
@@ -23,7 +24,7 @@
 @import "base/form-elements";
 // Кнопки
 @import "base/buttons";
-// Кнопки
+// Спрайты
 @import "base/sprite";
 
 
@@ -32,6 +33,7 @@
 @import "layout/main-navigation";
 @import "layout/footer";
 @import "layout/content";
+@import "layout/grid";
 
 
 // ==== Компоненты ====

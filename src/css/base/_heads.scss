@@ -1,37 +1,24 @@
 h1 {
   font-size: 1.9rem;
-  line-height: 1;
+  line-height: 2rem;
   color: $main-color;
-  margin: 0 0 40px;
-
-  @include mq($until: tablet-sm) {
-    font-size: 1.4rem;
-    margin-bottom: 30px;
-    line-height: 2rem;
-  }
-  @include mq($until: mobile-lg) {
-    font-size: 1.2rem;
-    margin-bottom: 24px;
-    line-height: 1.6rem;
-  }
+  margin-bottom: 1.5em;
+  font-weight: $fw-semi-bold;
 }
 
 h2 {
   font-size: 1.5rem;
   line-height: 1;
   color: $black-color;
-  margin-bottom: 30px;
+  margin-bottom: 1.2em;
+  font-weight: $fw-semi-bold;
 
-  @include mq($until: tablet-sm) {
-    font-size: 1.3rem;
-    margin-bottom: 20px;
-  }
 }
 
 h3 {
   font-size: 1.1rem;
   color: $main-dark-color;
-  line-height: 1;
-  margin-bottom: 15px;
+  line-height: 1.3rem;
+  margin-bottom: 1em;
   font-weight: $fw-semi-bold;
 }

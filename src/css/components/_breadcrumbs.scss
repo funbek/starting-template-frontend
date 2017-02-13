@@ -1,6 +1,7 @@
 .breadcrumbs-block {
   position: relative;
-  > .list {
+
+  .list {
     position: absolute;
     left: 0;
     top: -($main-top-padding + 30px);
@@ -24,7 +25,7 @@
 
 .breadcrumbs-list {
   font-size: 0;
-  > .li {
+  .li {
     display: inline-block;
   }
 }
@@ -39,7 +40,7 @@
     line-height: 1;
     color: $breadcrumb-color;
   }
-  > .link {
+  .link {
     font-size: .8rem;
     line-height: 1;
     color: $breadcrumb-color;

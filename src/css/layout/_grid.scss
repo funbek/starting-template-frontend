@@ -1,0 +1,22 @@
+.container {
+  width: 960px;
+
+  @include mq($from: desctop-md) {
+    width: $container-lg;
+  }
+  @include mq($until: tablet-lg) {
+    width: 800px;
+  }
+  @include mq($until: tablet-sm) {
+    width: $container-sm;
+  }
+  @include mq($until: mobile-lg) {
+    width: 100%;
+  }
+}
+.col-xxs-12 {
+  @include mq($until: mobile-sm) {
+    width: 100%;
+    float: left;
+  }
+}

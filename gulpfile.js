@@ -29,7 +29,6 @@ var path = {
         image: 'build/img/',
         ico: 'build/img/ico/', //Выкидываем иконки
         fonts: 'build/fonts/',
-        bowerDir: 'build/fonts',
         browserconfig: 'build/',
         jsVendor: 'build/js/vendor/'
     },
@@ -44,7 +43,7 @@ var path = {
         image: 'src/img/*.*', //Синтаксис img/**/*.* означает - взять все файлы всех расширений из папки и из вложенных каталогов
         browserconfig: 'src/*.xml', //Файл для определения favicon в windows mobile
         fonts: 'src/fonts/**/*.*',
-        bowerDir: 'bower_components',
+        nodeDir: 'node_modules',
         jsVendor: 'src/js/vendor/*.js'
     },
     watch: { //Тут мы укажем, за изменением каких файлов мы хотим наблюдать
@@ -87,8 +86,6 @@ gulp.task('html:build', function () {
         .pipe(wiredep({}))
         .pipe(useref()) // Забираем файлы из bower_components
         .pipe(rigger()) //Прогоним через rigger
-        //.pipe(gulpif('*.js', uglify())) // сжимаем все js файлы
-        //.pipe(htmlmin({collapseWhitespace: true})) // Сжимаем html
         .pipe(gulp.dest(path.build.html)) //Выплюнем их в папку build
         .pipe(reload({stream: true})); //И перезагрузим наш сервер для обновлений
 });
@@ -98,7 +95,6 @@ gulp.task('js:build', function () {
     gulp.src(path.src.js) //Найдем наш main файл
         .pipe(rigger()) //Прогоним через rigger
         .pipe(uglify()) //Сожмем наш js
-        // .pipe(gzip())
         .pipe(gulp.dest(path.build.js)) //Выплюнем готовый файл в build
         .pipe(reload({stream: true})); //И перезагрузим наш сервер для обновлений
 });
@@ -160,8 +156,8 @@ gulp.task('fonts:build', function() {
 
 // Забираем шрифты из fontawesome
 gulp.task('fontawesome:build', function() {
-    gulp.src(path.src.bowerDir + '/font-awesome/fonts/*.*')
-        .pipe(gulp.dest(path.build.bowerDir));
+    gulp.src(path.src.nodeDir + '/font-awesome/fonts/*.*')
+        .pipe(gulp.dest(path.build.fonts));
 });
 
 // Забираем файл конфигурации browserconfig
