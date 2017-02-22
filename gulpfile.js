@@ -38,6 +38,7 @@ var path = {
         jsVendor: 'build/js/vendor/'
     },
     src: { //Пути откуда брать исходники
+        cleanHtml: 'src/**/*.html', // Для очистки
         html: 'src/*.html', //Синтаксис src/*.html говорит gulp что мы хотим взять все файлы с расширением .html
         js: 'src/js/main.js',//В стилях и скриптах нам понадобятся только main файлы
         style: 'src/css/*.scss',
@@ -115,9 +116,9 @@ gulp.task('style:build', function () {
         .pipe(autoprefixer( {
             browsers: ["last 20 version", "> 1%", "ie 8", "ie 7"], cascade: false
         }))
-        // .pipe(uncss({
-        //     html: ['*.html'] // Убираем неиспользуемые стили (проверяем по всем файлам с расширением html)
-        // }))
+        .pipe(uncss({
+            html: [path.src.cleanHtml] // Убираем неиспользуемые стили (проверяем по всем файлам с расширением html)
+        }))
         .pipe(sass({
             outputStyle: 'compressed'
         }))
