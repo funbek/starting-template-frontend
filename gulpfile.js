@@ -18,7 +18,12 @@ var gulp = require('gulp'),
     cleanCSS = require('gulp-clean-css'), // для сжатия обычных css
     htmlmin = require('gulp-htmlmin'), // сжимаем html, есть ли такая небохобимость???
     gzip = require('gulp-gzip'), // сжимаем gzip
+    uncss = require('gulp-uncss'), // Удаляем ненужные стили
+    del = require('del'),
     reload = browserSync.reload
+
+
+const isDevelopment = process.env.NODE_ENV || process.env.NODE_ENV == 'development';
 
 // Прописываем пути
 var path = {
@@ -74,8 +79,8 @@ gulp.task('webserver', function(){
 })
 
 // Очистка из папки build
-gulp.task('clean', function (cb) {
-    rimraf(path.clean, cb);
+gulp.task('clean', function () {
+    return del(path.clean);
 });
 
 
@@ -83,9 +88,11 @@ gulp.task('clean', function (cb) {
 // сборка html
 gulp.task('html:build', function () {
     gulp.src(path.src.html) //Выбирем файлы по нужному пути
-        .pipe(wiredep({}))
-        .pipe(useref()) // Забираем файлы из bower_components
+        .pipe(wiredep({})) // Забираем файлы из bower_components
+        .pipe(useref()) // Объединяем все файлы в один
+        .pipe(gulpif('*.js', uglify())) // сжимаем все js файлы
         .pipe(rigger()) //Прогоним через rigger
+        //.pipe(htmlmin({collapseWhitespace: true})) // Сжимаем html
         .pipe(gulp.dest(path.build.html)) //Выплюнем их в папку build
         .pipe(reload({stream: true})); //И перезагрузим наш сервер для обновлений
 });
@@ -95,6 +102,7 @@ gulp.task('js:build', function () {
     gulp.src(path.src.js) //Найдем наш main файл
         .pipe(rigger()) //Прогоним через rigger
         .pipe(uglify()) //Сожмем наш js
+        .pipe(gulpif('*.js', uglify())) // сжимаем все js файлы
         .pipe(gulp.dest(path.build.js)) //Выплюнем готовый файл в build
         .pipe(reload({stream: true})); //И перезагрузим наш сервер для обновлений
 });
@@ -102,16 +110,18 @@ gulp.task('js:build', function () {
 // собираем css
 gulp.task('style:build', function () {
     gulp.src(path.src.style) //Выберем наш main.scss
-        .pipe(sourcemaps.init())
+        .pipe(gulpif(isDevelopment, sourcemaps.init()))
         .pipe(sass().on('error', sass.logError)) //Выдаем ошибки
         .pipe(autoprefixer( {
             browsers: ["last 20 version", "> 1%", "ie 8", "ie 7"], cascade: false
         }))
+        // .pipe(uncss({
+        //     html: ['*.html'] // Убираем неиспользуемые стили (проверяем по всем файлам с расширением html)
+        // }))
         .pipe(sass({
             outputStyle: 'compressed'
         }))
-        .pipe(sourcemaps.write('.'))
-        // .pipe(gzip())
+        .pipe(gulpif(isDevelopment, sourcemaps.write('.')))
         .pipe(gulp.dest(path.build.css)) //И в build
         .pipe(reload({stream: true})); //И перезагрузим наш сервер для обновлений
 });
