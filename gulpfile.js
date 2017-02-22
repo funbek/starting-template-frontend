@@ -84,13 +84,13 @@ gulp.task('clean', function () {
 });
 
 
-
 // сборка html
 gulp.task('html:build', function () {
     gulp.src(path.src.html) //Выбирем файлы по нужному пути
         .pipe(wiredep({})) // Забираем файлы из bower_components
         .pipe(useref()) // Объединяем все файлы в один
         .pipe(gulpif('*.js', uglify())) // сжимаем все js файлы
+        .pipe(gulpif('*.css', cleanCSS({compatibility: 'ie8'}))) // сжимаем все js файлы
         .pipe(rigger()) //Прогоним через rigger
         //.pipe(htmlmin({collapseWhitespace: true})) // Сжимаем html
         .pipe(gulp.dest(path.build.html)) //Выплюнем их в папку build
