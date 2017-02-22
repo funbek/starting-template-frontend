@@ -23,8 +23,6 @@ var gulp = require('gulp'),
     reload = browserSync.reload
 
 
-const isDevelopment = process.env.NODE_ENV || process.env.NODE_ENV == 'development';
-
 // Прописываем пути
 var path = {
     build: { //Тут мы укажем куда складывать готовые после сборки файлы
@@ -111,7 +109,7 @@ gulp.task('js:build', function () {
 // собираем css
 gulp.task('style:build', function () {
     gulp.src(path.src.style) //Выберем наш main.scss
-        .pipe(gulpif(isDevelopment, sourcemaps.init()))
+        .pipe(sourcemaps.init())
         .pipe(sass().on('error', sass.logError)) //Выдаем ошибки
         .pipe(autoprefixer( {
             browsers: ["last 20 version", "> 1%", "ie 8", "ie 7"], cascade: false
@@ -122,7 +120,7 @@ gulp.task('style:build', function () {
         .pipe(sass({
             outputStyle: 'compressed'
         }))
-        .pipe(gulpif(isDevelopment, sourcemaps.write('.')))
+        .pipe(sourcemaps.write())
         .pipe(gulp.dest(path.build.css)) //И в build
         .pipe(reload({stream: true})); //И перезагрузим наш сервер для обновлений
 });
