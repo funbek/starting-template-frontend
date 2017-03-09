@@ -1,26 +1,24 @@
 'use strict';
 
-var gulp = require('gulp'),
-    watch = require('gulp-watch'), //следит за изменениями файлов
-    uglify = require('gulp-uglify'), //компилирует js
-    sass = require('gulp-sass'), //компилятор sass
-    sourcemaps = require('gulp-sourcemaps'), //map для sass
-    rigger = require('gulp-rigger'),
-    imagemin = require('gulp-imagemin'), //оптимизация изображений jpg
-    pngquant = require('imagemin-pngquant'), //оптимизация изображений png
-    rimraf = require('gulp-rimraf'),
-    spritesmith = require('gulp.spritesmith'), //спрайты
-    browserSync = require("browser-sync"), // запуск сервера (как локального так и глобального)
-    autoprefixer = require('gulp-autoprefixer'), // добавляем префиксы
-    useref = require('gulp-useref'), // изменяем пути
-    wiredep = require('wiredep').stream, // забираем из bower
-    gulpif = require('gulp-if'),  // добавляет ветвление (здесь нужно для минификации)
-    cleanCSS = require('gulp-clean-css'), // для сжатия обычных css
-    htmlmin = require('gulp-htmlmin'), // сжимаем html, есть ли такая небохобимость???
-    gzip = require('gulp-gzip'), // сжимаем gzip
-    uncss = require('gulp-uncss'), // Удаляем ненужные стили
-    del = require('del'),
-    reload = browserSync.reload
+const gulp = require('gulp');
+const watch = require('gulp-watch'); //следит за изменениями файлов
+const uglify = require('gulp-uglify'); //компилирует js
+const sass = require('gulp-sass'); //компилятор sass
+const sourcemaps = require('gulp-sourcemaps'); //map для sass
+const rigger = require('gulp-rigger'); // Позволяет вставлять шаблоны простой конструкцией
+const imagemin = require('gulp-imagemin'); //оптимизация изображений jpg
+const pngquant = require('imagemin-pngquant'); //оптимизация изображений png
+const rimraf = require('gulp-rimraf');
+const spritesmith = require('gulp.spritesmith'); //спрайты
+const browserSync = require('browser-sync'); // запуск сервера (как локального так и глобального)
+const autoprefixer = require('gulp-autoprefixer'); // добавляем префиксы
+const useref = require('gulp-useref'); // изменяем пути
+const wiredep = require('wiredep').stream; // забираем из bower
+const gulpif = require('gulp-if');  // добавляет ветвление (здесь нужно для минификации)
+const cleanCSS = require('gulp-clean-css'); // для сжатия обычных css
+const uncss = require('gulp-uncss'); // Удаляем ненужные стили
+const del = require('del'); // Удаляем папки
+const reload = browserSync.reload;
 
 
 // Прописываем пути
@@ -82,7 +80,6 @@ gulp.task('clean', function () {
     return del(path.clean);
 });
 
-
 // сборка html
 gulp.task('html:build', function () {
     gulp.src(path.src.html) //Выбирем файлы по нужному пути
@@ -91,7 +88,6 @@ gulp.task('html:build', function () {
         .pipe(gulpif('*.js', uglify())) // сжимаем все js файлы
         .pipe(gulpif('*.css', cleanCSS({compatibility: 'ie8'}))) // сжимаем все js файлы
         .pipe(rigger()) //Прогоним через rigger
-        //.pipe(htmlmin({collapseWhitespace: true})) // Сжимаем html
         .pipe(gulp.dest(path.build.html)) //Выплюнем их в папку build
         .pipe(reload({stream: true})); //И перезагрузим наш сервер для обновлений
 });
@@ -118,7 +114,7 @@ gulp.task('style:build', function () {
             html: [path.src.cleanHtml] // Убираем неиспользуемые стили (проверяем по всем файлам с расширением html)
         }))
         .pipe(sass({
-            outputStyle: 'compressed'
+            outputStyle: 'compressed' // Обрабатываем sass и сжимаем его
         }))
         .pipe(sourcemaps.write())
         .pipe(gulp.dest(path.build.css)) //И в build
@@ -157,13 +153,13 @@ gulp.task('ico:build', function() {
         .pipe(gulp.dest(path.build.ico))
 });
 
-// Забираем шрифты
+// Забираем нестандартные шрифты
 gulp.task('fonts:build', function() {
     gulp.src(path.src.fonts)
         .pipe(gulp.dest(path.build.fonts))
 });
 
-// Забираем шрифты из fontawesome
+// Забираем шрифты из fontawesome, если есть такая необходимость
 gulp.task('fontawesome:build', function() {
     gulp.src(path.src.nodeDir + '/font-awesome/fonts/*.*')
         .pipe(gulp.dest(path.build.fonts));
@@ -191,24 +187,22 @@ gulp.task('build', [
 
 // следим за изменениями файлов
 gulp.task('watch', function(){
-    watch([path.watch.html], function(event, cb) {
+    watch([path.watch.html], function() {
         gulp.start('html:build');
     });
-
-    watch([path.watch.style], function(event, cb) {
+    watch([path.watch.style], function() {
         gulp.start('style:build');
     });
-    watch([path.watch.js], function(event, cb) {
+    watch([path.watch.js], function() {
         gulp.start('js:build');
     });
-
-    watch([path.watch.image], function(event, cb) {
+    watch([path.watch.image], function() {
         gulp.start('image:build');
     });
-    watch([path.watch.fonts], function(event, cb) {
+    watch([path.watch.fonts], function() {
         gulp.start('fonts:build');
     });
-    watch([path.watch.browserconfig], function(event, cb) {
+    watch([path.watch.browserconfig], function() {
         gulp.start('config:build');
     });
 });
