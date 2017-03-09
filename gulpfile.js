@@ -18,6 +18,8 @@ const gulpif = require('gulp-if');  // добавляет ветвление (з
 const cleanCSS = require('gulp-clean-css'); // для сжатия обычных css
 const uncss = require('gulp-uncss'); // Удаляем ненужные стили
 const del = require('del'); // Удаляем папки
+const notify = require('gulp-notify'); // Обработка ошибок и вывод их в симпотичном виде
+const plumber =require('gulp-plumber');
 const reload = browserSync.reload;
 
 
@@ -95,7 +97,14 @@ gulp.task('html:build', function () {
 
 gulp.task('js:build', function () {
     gulp.src(path.src.js) //Найдем наш main файл
-        .pipe(rigger()) //Прогоним через rigger
+        .pipe(plumber({ // Добавляет в поток pipe onError
+          errorHandler: notify.onError(function(err) { // Обрабатываем ошибки и отображаем их
+            return {
+              title: 'JavaScript',
+              message: err.message
+            };
+          })
+        }))
         .pipe(uglify()) //Сожмем наш js
         .pipe(gulpif('*.js', uglify())) // сжимаем все js файлы
         .pipe(gulp.dest(path.build.js)) //Выплюнем готовый файл в build
@@ -105,18 +114,25 @@ gulp.task('js:build', function () {
 // собираем css
 gulp.task('style:build', function () {
     gulp.src(path.src.style) //Выберем наш main.scss
-        .pipe(sourcemaps.init())
-        .pipe(sass().on('error', sass.logError)) //Выдаем ошибки
+        .pipe(plumber({ // Добавляет в поток pipe onError
+          errorHandler: notify.onError(function(err) { // Обрабатываем ошибки и отображаем их
+            return {
+              title: 'Styles',
+              message: err.message
+            };
+          })
+        }))
+        .pipe(sourcemaps.init()) // Инициализируем карту
+        .pipe(sass({
+          outputStyle: 'compressed' // Обрабатываем sass и сжимаем его
+        }))
         .pipe(autoprefixer( {
             browsers: ["last 20 version", "> 1%", "ie 8", "ie 7"], cascade: false
         }))
         .pipe(uncss({
             html: [path.src.cleanHtml] // Убираем неиспользуемые стили (проверяем по всем файлам с расширением html)
         }))
-        .pipe(sass({
-            outputStyle: 'compressed' // Обрабатываем sass и сжимаем его
-        }))
-        .pipe(sourcemaps.write())
+        .pipe(sourcemaps.write()) // Записываем карту
         .pipe(gulp.dest(path.build.css)) //И в build
         .pipe(reload({stream: true})); //И перезагрузим наш сервер для обновлений
 });
