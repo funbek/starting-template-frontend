@@ -1,0 +1,16 @@
+.grid-container {
+  @include grid-container;
+
+  &__first {
+    @include grid-column(3);
+  }
+  &__second {
+    @include grid-column(3);
+  }
+  &__third {
+    @include grid-column(3);
+  }
+  &__fourth {
+    @include grid-column(3);
+  }
+}

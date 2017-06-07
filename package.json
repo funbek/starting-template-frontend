@@ -4,6 +4,7 @@
   "description": "",
   "main": "gulpfile.js",
   "dependencies": {
+    "bourbon-neat": "^2.0.0",
     "reset-css": "^2.2.0",
     "sass-mq": "^3.3.2"
   },

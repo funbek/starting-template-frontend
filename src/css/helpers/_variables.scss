@@ -31,3 +31,10 @@ $z-index: (
   "default"            : 1,
   "below"              : -1,
 );
+
+
+// Neat grid
+$neat-grid: (
+  columns: 12,
+  gutter: 15px,
+);
