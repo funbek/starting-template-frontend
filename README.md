@@ -3,7 +3,7 @@
 ## What need for compile ##
 * Install node.js (npm)
 * Install bower
-* npm install
+* yarn install
 * bower install
 
 ## Comand to start project ##
