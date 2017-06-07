@@ -1,26 +1,31 @@
 {
-  "name": "Start",
+  "name": "Binary-option-compare",
   "version": "1.0.0",
   "description": "",
   "main": "gulpfile.js",
   "dependencies": {
-    "bootstrap-sass": "^3.3.7",
     "reset-css": "^2.2.0",
-    "sass-bootstrap-grid-only": "^1.0.3",
     "sass-mq": "^3.3.2"
+  },
+  "scripts": {
+    "dev": "NODE_ENV=development gulp",
+    "prod": "NODE_ENV=production gulp production"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
     "browser-sync": "*",
     "del": "^2.2.2",
-    "gulp": "*",
+    "gulp": "^3.9.1",
     "gulp-autoprefixer": "^3.1.0",
     "gulp-clean-css": "^2.4.0",
+    "gulp-htmlmin": "^3.0.0",
     "gulp-if": "^2.0.0",
     "gulp-imagemin": "*",
+    "gulp-mode": "^1.0.1",
     "gulp-notify": "^3.0.0",
     "gulp-plumber": "^1.1.0",
+    "gulp-remove-html-comments": "^1.0.1",
     "gulp-rigger": "*",
     "gulp-rimraf": "*",
     "gulp-sass": "^2.1.1",
@@ -30,7 +35,9 @@
     "gulp-useref": "^3.0.4",
     "gulp-watch": "*",
     "gulp.spritesmith": "*",
+    "imagemin-jpegtran": "^5.0.2",
     "imagemin-pngquant": "*",
+    "imagemin-svgo": "^5.2.1",
     "wiredep": "^4.0.0"
   }
 }
