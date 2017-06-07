@@ -1,4 +1,4 @@
-# Starer kit for project with bootstrap, fontAwesome, magnific popup #
+# Starer kit for project #
 
 ## What need for compile ##
 * Install node.js (npm)

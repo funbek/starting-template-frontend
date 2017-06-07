@@ -1,13 +1,17 @@
 .grid-container {
-  @include grid-container;
-  @include grid-visual;
+  // @include grid-container;
+  display: flex;
+  justify-content: space-between;
+  // @include grid-visual;
   margin-bottom: 40px;
   margin-top: 40px;
 
   %show-style {
     padding: 40px;
     background: darken($white-color, 20%);
-    @include grid-column(3);
+    // @include grid-column(3);
+    width: percentage(2/12);
+    text-align: center;
   }
 
   &__first {
