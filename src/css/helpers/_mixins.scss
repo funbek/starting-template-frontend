@@ -1,4 +1,4 @@
-// Кнопки
+// Btns
 @mixin btnColor($color: $submenu-color) {
 	background: $color;
 
@@ -38,56 +38,24 @@
   display: inline-block;
 }
 
-// убираем стандартное форматирование у ссылок и задаем им цвет
 
-@mixin link-decor($color: $second-color, $hover-color: $hover-link-color, $visited-color: $visited-link-color ) {
-  text-decoration: none;
-  color: $color;
-
-  &:hover,
-  &:active,
-  &:focus {
-    color: $hover-color;
-  }
-
-  &:visited {
-    color: $visited-color;
-  }
-}
-
-
-// Кросбарузерный opacity
-@mixin opacity($opacity) {
-  opacity: $opacity;
-  $opacity-ie: $opacity * 100;
-  filter: alpha(opacity=$opacity-ie); //IE8
-}
-
-
-
-// Относительное Центрирование  @include center(both);
+// Centered  @include center(both);
 @mixin center($position) {
   position: absolute;
 
   @if $position == 'vertical' {
     top: 50%;
-    -webkit-transform: translateY(-50%);
-    -ms-transform: translateY(-50%);
     transform: translateY(-50%);
   }
 
   @else if $position == 'horizontal' {
     left: 50%;
-    -webkit-transform: translateX(-50%);
-    -ms-transform: translateX(-50%);
     transform: translate(-50%);
   }
 
   @else if $position == 'both' {
     top: 50%;
     left: 50%;
-    -webkit-transform: translate(-50%, -50%);
-    -ms-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
   }
 }
@@ -122,3 +90,25 @@
 	background-position: $background-position center;
 	padding-left: $padding-left;
 }
+
+
+@mixin triangle($size, $color, $direction) {
+    height: 0;
+    width: 0;
+    border-color: transparent;
+    border-style: solid;
+    border-width: $size / 2;
+
+    @if $direction == up {
+      border-bottom-color: $color;
+    } @else if $direction == right {
+      border-left-color:   $color;
+
+    } @else if $direction == down {
+      border-top-color:    $color;
+
+    } @else if $direction == left {
+      border-right-color:  $color;
+    }
+}
+// Using @include triangle($size, $color, $direction);

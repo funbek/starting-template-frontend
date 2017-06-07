@@ -1,8 +1,6 @@
 // ==== Сторонние пакеты ====
 @import "../../node_modules/reset-css/_reset.scss";
 @import "../../node_modules/sass-mq/_mq.scss";
-@import "../../node_modules/sass-bootstrap-grid-only/assets/stylesheets/_bootstrap-custom.scss";
-// @import "../../node_modules/font-awesome/scss/font-awesome.scss";
 
 
 // ==== Помошники ====
@@ -10,7 +8,6 @@
 @import "helpers/mixins";
 @import "helpers/functions";
 @import "helpers/media-size";
-@import "helpers/helpers";
 
 
 // ==== Базовые стили ====
@@ -37,22 +34,10 @@
 
 
 // ==== Компоненты ====
-// = Полезные ссылки =
-@import "components/usefull-links";
-// = Стили для табов =
-@import "components/tabs-element";
-// = Хлебные крошки =
-@import "components/breadcrumbs";
-// = Хлебные крошки =
-@import "components/navigation-content";
-// = Dropdown =
-@import "components/dropdown";
-// = Таблицы =
+// = Tables =
 @import "components/tables";
-// = Списки =
+// = Lists =
 @import "components/lists";
-// = Popups =
-@import "components/popups";
 
 
-// ==== Страницы ====
+// ==== Pages ====
