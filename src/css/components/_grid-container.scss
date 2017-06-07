@@ -1,16 +1,25 @@
 .grid-container {
   @include grid-container;
+  @include grid-visual;
+  margin-bottom: 40px;
+  margin-top: 40px;
+
+  %show-style {
+    padding: 40px;
+    background: darken($white-color, 20%);
+    @include grid-column(3);
+  }
 
   &__first {
-    @include grid-column(3);
+    @extend %show-style;
   }
   &__second {
-    @include grid-column(3);
+    @extend %show-style;
   }
   &__third {
-    @include grid-column(3);
+    @extend %show-style;
   }
   &__fourth {
-    @include grid-column(3);
+    @extend %show-style;
   }
 }
