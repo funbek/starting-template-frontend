@@ -96,17 +96,29 @@ gulp.task('clean', function () {
 });
 
 // сборка html
-gulp.task('html:build', function () {
+gulp.task('html:build', ['compress'], function () {
 	gulp.src(path.src.html) //Выбирем файлы по нужному пути
 		.pipe(wiredep({})) // Забираем файлы из bower_components
 		.pipe(useref()) // Объединяем все файлы в один
-		.pipe(gulpif('*.js', uglify())) // сжимаем все js файлы подставленные из bower
-        .pipe(gulpif('*.css', cleanCSS({compatibility: 'ie8'}))) // сжимаем все css файлы подставленные из bower
-		.pipe(rigger()) //Прогоним через rigger
+		.pipe(rigger()) //Использование одного файла в другом
 		.pipe(removeHtmlComments()) // Удаляем комментарии
 		.pipe(gulp.dest(path.build.html)) //Выплюнем их в папку build
-		//.pipe(reload({stream: true})); //И перезагрузим наш сервер для обновлений
+		// .pipe(reload({stream: true})); //И перезагрузим наш сервер для обновлений
 });
+
+gulp.task('compress:css', function() {
+	gulp.src(path.build.css + '/combined.css')
+		.pipe(sass({
+		  outputStyle: 'compressed' // Обрабатываем sass и сжимаем его
+		}))
+		.pipe(gulp.dest(path.build.css))
+})
+
+gulp.task('compress:js', function() {
+	gulp.src(path.build.js + '/combined.js')
+		.pipe(uglify())
+		.pipe(gulp.dest(path.build.js))
+})
 
 // сборка js
 gulp.task('js:build', function () {
@@ -120,7 +132,6 @@ gulp.task('js:build', function () {
 		  })
 		}))
 		.pipe(uglify()) //Сожмем наш js
-		.pipe(gulpif('*.js', uglify())) // сжимаем все js файлы
 		.pipe(gulp.dest(path.build.js)) //Выплюнем готовый файл в build
 		.pipe(reload({stream: true})); //И перезагрузим наш сервер для обновлений
 });
@@ -221,10 +232,21 @@ gulp.task('build', [
 	'config:build'
 ]);
 
+gulp.task('compress', [
+	'compress:css',
+	'compress:js'
+])
+
 // следим за изменениями файлов
 gulp.task('watch', function(){
 	watch([path.watch.html], function() {
 		gulp.start('html:build');
+	});
+	watch([path.watch.style], function() {
+		gulp.start('compress:css');
+	});
+	watch([path.watch.style], function() {
+		gulp.start('compress:js');
 	});
 	watch([path.watch.style], function() {
 		gulp.start('style:build');
@@ -244,4 +266,4 @@ gulp.task('watch', function(){
 });
 
 // Задаем начальную команду gulp на выполнение тасков и слежение элементов
-gulp.task('default', ['build', 'watch', 'webserver'])
+gulp.task('default', ['build', 'watch', 'compress', 'webserver'])
