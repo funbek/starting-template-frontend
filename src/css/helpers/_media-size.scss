@@ -1,16 +1,14 @@
-$mq-breakpoints: (
-  mobile-xs:		440px,
-  mobile-sm:		540px,
-  mobile-md:		700px,
-  mobile-lg:		768px,
+$mobile-xs :		440px;
+$mobile-sm :		540px;
+$mobile-md :		700px;
+$mobile-lg :		768px;
 
-  tablet-xs:		820px,
-  tablet-sm:		860px,
-  tablet-md:		900px,
-  tablet-lg:		991px,
+$tablet-xs :		820px;
+$tablet-sm :		860px;
+$tablet-md :		900px;
+$tablet-lg :		991px;
 
-  desctop-xs:		1080px,
-  desctop-sm:		1200px,
-  desctop-md:		1300px,
-  desctop-lg:		1700px
-);
+$desctop-xs:		1080px;
+$desctop-sm:		1200px;
+$desctop-md:		1300px;
+$desctop-lg:		1700px;

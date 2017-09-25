@@ -1,11 +1,11 @@
 $(document).ready(function() {
-	// добавление класса active
+	// Add class active
 	$(".trigger-button").on("click", function() {
 			$(".trigger-button").not(this).removeClass("active");
 			$(this).toggleClass("active");
 	});
 
-	// скрытие пункта с active при нажатии на свободную область
+	// hide element if event click not by them
 	$(document).on( "click", function(event){
 			if( $(event.target).closest(".trigger-button, .hidden-block").length )
 			return;
@@ -14,20 +14,23 @@ $(document).ready(function() {
 	});
 
 	if ( $(".tabs") ) {
-		// табы
-		$(".tabs").delegate(".tab-list:not(.current)", "click", function() {
+		// Tabs
+		$(".tabs-container").delegate(".tabs-container__list:not(.tabs-container__list_current)", "click", function() {
 			$(this)
-			.addClass("current")
-			.siblings()
-			.removeClass("current")
-			.parents("div.tabs-content")
-			.eq(0).find(">div.box")
-			.hide()
-			.eq($(this).index())
-			.fadeIn(500).show();
-			return false;
+				.addClass("tabs-container__list_current")
+				.siblings()
+				.removeClass("tabs-container__list_current")
+				.parents(".tabs-container__head")
+	      .siblings(".tabs-container__content")
+				.eq(0).find(" > .tabs-container__item")
+				.hide()
+	      .removeClass("tabs-container__item_active")
+				.eq($(this).index())
+	      .addClass("tabs-container__item_active")
+				.fadeIn(500).show();
+				return false;
 		})
-		// !!!! На мобильных устройствах делаем аккордеон
+		// Accoridion on mobile devices
 		$(".accordion-trigger").on("click", function() {
 			if ( $(this).hasClass("active") ){
 				$(this).removeClass("active");

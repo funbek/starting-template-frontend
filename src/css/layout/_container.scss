@@ -1,0 +1,19 @@
+.container {
+  width: $container-lg;
+  margin: 0 auto;
+
+  transition: width .2s ease-in-out;
+
+  @media(max-width: $tablet-lg) {
+    width: $container-sm;
+  }
+
+  @media(max-width: $mobile-lg) {
+    width: 100%;
+    padding: 0 40px;
+  }
+
+  @media(max-width: $mobile-sm) {
+    padding: 0 20px;
+  }
+}

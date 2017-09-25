@@ -7,50 +7,38 @@
 		<!-- endbuild -->
 		//= templates/head.html
 	</head>
-	<!-- Класс main-page убирает отступ контента и ставит его по центру -->
-	<body class="body-site">
+	<body>
+		<div class="content">
+			<!-- main navigation -->
+			<!-- //= templates/g-menu.html -->
+			<!-- ++==++ -->
 
-		<!-- Глваное меню сайта -->
-		<!-- //= templates/g-menu.html -->
-		<!-- ++==++ -->
+			<!-- The head of site, not changed?! -->
+			<header class="main-header">
+				<!-- //= templates/header.html -->
+			</header>
 
-		<!-- The head of site, not changed?! -->
-		<header class="head-site">
-			<!-- //= templates/header.html -->
-		</header>
+			<main class="content__main main-block">
 
-		<main class="main">
-			<div class="container">
-				<article class="">
-					<h1>Wow, what is this1?</h1>
-					<p>the paragraph</p>
+				<div class="main-block__inner">
 
 					<div class="container">
-						<div class="grid-container">
-							<div class="grid-container__first">
-								123
-							</div>
-							<div class="grid-container__second">
-								123
-							</div>
-							<div class="grid-container__third">
-								123
-							</div>
-							<div class="grid-container__fourth">
-								123
-							</div>
-						</div>
-						<div>
-							wow
-						</div>
-					</div>
-				</article>
-				</div>
-		</main>
+						<section class="">
+							<h1>Wow, what is this1?</h1>
+							<p>the paragraph</p>
 
-		<footer class="footer-site">
-			<!-- //= templates/footer.html -->
-		</footer>
+						</section>
+
+					</div>
+				</div>
+
+			</main>
+
+			<footer class="main-footer">
+				<!-- //= templates/footer.html -->
+			</footer>
+		</div>
+
 
 		<!-- Download and compiled all bower_components scripts -->
 
@@ -59,11 +47,11 @@
 		<!-- endbower -->
 		<!-- endbuild -->
 
-		<!-- Load my file, when we control all libraries -->
+		<!-- js file -->
 		<script src="js/main.js"></script>
 
 
-		<!-- Popup контейнеры -->
+		<!-- Popup containers -->
 		//= templates/popups.html
 		<!-- ++==++ -->
 

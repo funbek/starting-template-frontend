@@ -1,8 +1,5 @@
 // ==== Сторонние пакеты ====
 @import "../../node_modules/reset-css/_reset.scss";
-@import "../../node_modules/sass-mq/_mq.scss";
-@import "../../node_modules/bourbon-neat/core/neat";
-
 
 // ==== Помошники ====
 @import "helpers/variables";
@@ -28,19 +25,13 @@
 
 // ==== Макеты ====
 @import "layout/header";
-@import "layout/main-navigation";
 @import "layout/footer";
-@import "layout/content";
-@import "layout/grid";
+@import "layout/container";
+@import "layout/lists";
+@import "layout/tables";
 
 
 // ==== Компоненты ====
-// = Tables =
-@import "components/tables";
-// = Lists =
-@import "components/lists";
-// = Grid container =
-@import "components/grid-container";
 
 
 // ==== Pages ====

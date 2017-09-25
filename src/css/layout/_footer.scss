@@ -1,0 +1,21 @@
+.footer {
+  position: relative;
+  z-index: 9;
+
+  padding: 36px 0;
+
+  text-align: center;
+
+  background: $footer-bg;
+
+  &__inner {
+    @media(max-width: $mobile-lg) {
+      padding: 0 20px;
+    }
+  }
+
+  &__info {
+    max-width: 630px;
+    margin: 0 auto;
+  }
+}
