@@ -39,6 +39,7 @@
     "imagemin-jpegtran": "^5.0.2",
     "imagemin-pngquant": "*",
     "imagemin-svgo": "^5.2.1",
+    "webpack-stream": "^4.0.0",
     "wiredep": "^4.0.0"
   }
 }
