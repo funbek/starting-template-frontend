@@ -1,29 +1,29 @@
-// ==== Сторонние пакеты ====
+// ==== Third part packages ====
 @import "../../node_modules/reset-css/_reset.scss";
 
-// ==== Помошники ====
+// ==== Helpers ====
 @import "helpers/variables";
 @import "helpers/mixins";
 @import "helpers/functions";
 @import "helpers/media-size";
 
 
-// ==== Базовые стили ====
-// Шрифты
+// ==== Base styles ====
+// Fonts
 @import "base/typography";
-// Стили по умолчанию
+// Default styles
 @import "base/default";
-// Стили заголовков
+// Head styles
 @import "base/heads";
-// Элементы формы
+// Form element
 @import "base/form-elements";
-// Кнопки
+// Buttons
 @import "base/buttons";
-// Спрайты
+// Sprits
 @import "base/sprite";
 
 
-// ==== Макеты ====
+// ==== Layout ====
 @import "layout/header";
 @import "layout/footer";
 @import "layout/container";
@@ -31,7 +31,7 @@
 @import "layout/tables";
 
 
-// ==== Компоненты ====
+// ==== Components ====
 
 
 // ==== Pages ====
