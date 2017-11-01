@@ -23,6 +23,7 @@ const notify = require('gulp-notify'); // Обработка ошибок и в�
 const plumber = require('gulp-plumber');
 const htmlmin = require('gulp-htmlmin'); // Очистка html
 const removeHtmlComments = require('gulp-remove-html-comments'); // remove comments
+const webpack = require('webpack-stream');
 const reload = browserSync.reload;
 
 // устанавливаем значение глобальной переменной,
@@ -98,7 +99,6 @@ gulp.task('clean', function() {
 // сборка html
 gulp.task('html:build', ['compress'], function() {
     gulp.src(path.src.html) //Выбирем файлы по нужному пути
-        .pipe(wiredep({})) // Забираем файлы из bower_components
         .pipe(useref()) // Объединяем все файлы в один
         .pipe(rigger()) //Использование одного файла в другом
         .pipe(removeHtmlComments()) // Удаляем комментарии
@@ -113,28 +113,14 @@ gulp.task('compress:css', function() {
         .pipe(gulp.dest(path.build.css))
 })
 
-gulp.task('compress:js', function() {
-    gulp.src(path.build.js + '/combined.js')
-        .pipe(uglify())
-        .pipe(gulp.dest(path.build.js))
-})
-
 // сборка js
 gulp.task('js:build', function() {
     gulp.src(path.src.js) //Найдем наш main файл
-        .pipe(plumber({ // Добавляет в поток pipe onError
-            errorHandler: notify.onError(function(err) { // Обрабатываем ошибки и отображаем их
-                return {
-                    title: 'JavaScript',
-                    message: err.message
-                };
-            })
-        }))
-        .pipe(uglify()) //Сожмем наш js
+        .pipe(webpack( require('./webpack.config.js') ))
         .pipe(gulp.dest(path.build.js)) //Выплюнем готовый файл в build
         .pipe(reload({
             stream: true
-        })); //И перезагрузим наш сервер для обновлений
+        }));
 });
 
 // сборка css
@@ -156,9 +142,6 @@ gulp.task('style:build', function() {
             browsers: ["last 20 version", "> 1%", "ie 8", "ie 7"],
             cascade: false
         }))
-        // .pipe(uncss({
-        //     html: [path.src.cleanHtml] // Убираем неиспользуемые стили (проверяем по всем файлам с расширением html)
-        // }))
         .pipe(sourcemaps.write('.')) // Записываем карту
         .pipe(gulp.dest(path.build.css)) //И в build
         .pipe(reload({
@@ -239,8 +222,7 @@ gulp.task('build', [
 ]);
 
 gulp.task('compress', [
-    'compress:css',
-    'compress:js'
+    'compress:css'
 ])
 
 // следим за изменениями файлов
@@ -250,9 +232,6 @@ gulp.task('watch', function() {
     });
     watch([path.watch.style], function() {
         gulp.start('compress:css');
-    });
-    watch([path.watch.style], function() {
-        gulp.start('compress:js');
     });
     watch([path.watch.style], function() {
         gulp.start('style:build');
