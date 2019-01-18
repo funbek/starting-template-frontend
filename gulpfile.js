@@ -2,26 +2,22 @@
 
 const gulp = require('gulp');
 const watch = require('gulp-watch'); //следит за изменениями файлов
-const uglify = require('gulp-uglify'); //компилирует js
 const sass = require('gulp-sass'); //компилятор sass
 const sourcemaps = require('gulp-sourcemaps'); //map для sass
 const rigger = require('gulp-rigger'); // Позволяет вставлять шаблоны простой конструкцией
 const imagemin = require('gulp-imagemin'); //оптимизация изображений
-const pngquant = require('imagemin-pngquant'); //оптимизация изображений png
-const imageminJpegtran = require('imagemin-jpegtran'); //оптимизация изображений jpg
+const imageminOptipng = require('imagemin-optipng');
+const imageminJpegtran = require('imagemin-jpegtran');
+const imageminSvgo = require('imagemin-svgo');
 const rimraf = require('gulp-rimraf');
 const spritesmith = require('gulp.spritesmith'); //спрайты
 const browserSync = require('browser-sync'); // запуск сервера (как локального так и глобального)
 const autoprefixer = require('gulp-autoprefixer'); // добавляем префиксы
 const useref = require('gulp-useref'); // изменяем пути
-const wiredep = require('wiredep').stream; // забираем из bower
 const gulpif = require('gulp-if'); // добавляет ветвление (здесь нужно для минификации)
-const cleanCSS = require('gulp-clean-css'); // для сжатия обычных css
-const uncss = require('gulp-uncss'); // Удаляем ненужные стили
 const del = require('del'); // Удаляем папки
 const notify = require('gulp-notify'); // Обработка ошибок и вывод их в симпотичном виде
 const plumber = require('gulp-plumber');
-const htmlmin = require('gulp-htmlmin'); // Очистка html
 const removeHtmlComments = require('gulp-remove-html-comments'); // remove comments
 const webpack = require('webpack-stream');
 const reload = browserSync.reload;
@@ -157,12 +153,14 @@ gulp.task('image:build', function() {
             interlaced: true,
             progressive: true,
             optimizationLevel: 5,
-            svgoPlugins: [{
-                removeViewBox: false
-            }],
             use: [
-                pngquant(),
-                imageminJpegtran()
+                imageminOptipng(),
+                imageminJpegtran(),
+                imageminSvgo({
+                    plugins: [{
+                        removeViewBox: false
+                    }]
+                })
             ]
             // verbose: true
         }))
